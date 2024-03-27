@@ -1,0 +1,455 @@
+swagger: '2.0'
+info:
+  title: myABData
+  description: Another try to cennect to the open data on german autobahn
+  version: '1.0'
+host: verkehr.autobahn.de
+basePath: /o/autobahn/
+schemes:
+  - https
+consumes: []
+produces: []
+paths:
+  /:
+    get:
+      responses:
+        '200':
+          description: default
+          schema:
+            type: object
+            properties:
+              roads:
+                type: array
+                items:
+                  type: string
+                description: roads
+      summary: getAllAB
+      operationId: GetAllAB
+      description: Alle Autobahnen in DE
+      parameters: []
+  /{ABID}/services/roadworks:
+    get:
+      responses:
+        '200':
+          description: default
+          schema:
+            type: object
+            properties:
+              roadworks:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    extent:
+                      type: string
+                      description: extent
+                    identifier:
+                      type: string
+                      description: identifier
+                    routeRecommendation:
+                      type: array
+                      items: {}
+                      description: routeRecommendation
+                    coordinate:
+                      type: object
+                      properties:
+                        lat:
+                          type: string
+                          description: lat
+                        long:
+                          type: string
+                          description: long
+                      description: coordinate
+                    footer:
+                      type: array
+                      items:
+                        type: string
+                      description: footer
+                    impact:
+                      type: object
+                      properties:
+                        lower:
+                          type: string
+                          description: lower
+                        upper:
+                          type: string
+                          description: upper
+                        symbols:
+                          type: array
+                          items:
+                            type: string
+                          description: symbols
+                      description: impact
+                    icon:
+                      type: string
+                      description: icon
+                    isBlocked:
+                      type: string
+                      description: isBlocked
+                    description:
+                      type: array
+                      items:
+                        type: string
+                      description: description
+                    title:
+                      type: string
+                      description: title
+                    point:
+                      type: string
+                      description: point
+                    display_type:
+                      type: string
+                      description: display_type
+                    lorryParkingFeatureIcons:
+                      type: array
+                      items: {}
+                      description: lorryParkingFeatureIcons
+                    future:
+                      type: boolean
+                      description: future
+                    subtitle:
+                      type: string
+                      description: subtitle
+                    startTimestamp:
+                      type: string
+                      description: startTimestamp
+                description: roadworks
+      summary: getAllRoadworks
+      operationId: GetAllRoadworks
+      description: Alle Roadworks by ABxxx
+      parameters:
+        - name: ABID
+          in: path
+          required: true
+          type: string
+  /{ABID}/services/parking_lorry:
+    get:
+      responses:
+        '200':
+          description: default
+          schema:
+            type: object
+            properties:
+              parking_lorry:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    extent:
+                      type: string
+                      description: extent
+                    identifier:
+                      type: string
+                      description: identifier
+                    routeRecommendation:
+                      type: array
+                      items: {}
+                      description: routeRecommendation
+                    coordinate:
+                      type: object
+                      properties:
+                        lat:
+                          type: string
+                          description: lat
+                        long:
+                          type: string
+                          description: long
+                      description: coordinate
+                    footer:
+                      type: array
+                      items: {}
+                      description: footer
+                    icon:
+                      type: string
+                      description: icon
+                    isBlocked:
+                      type: string
+                      description: isBlocked
+                    description:
+                      type: array
+                      items:
+                        type: string
+                      description: description
+                    title:
+                      type: string
+                      description: title
+                    point:
+                      type: string
+                      description: point
+                    display_type:
+                      type: string
+                      description: display_type
+                    lorryParkingFeatureIcons:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          icon:
+                            type: string
+                            description: icon
+                          description:
+                            type: string
+                            description: description
+                          style:
+                            type: string
+                            description: style
+                      description: lorryParkingFeatureIcons
+                    future:
+                      type: boolean
+                      description: future
+                    subtitle:
+                      type: string
+                      description: subtitle
+                description: parking_lorry
+      summary: getAllParkingLorry
+      description: All parking lorries by ABxxx
+      operationId: GetAllParkingLorry
+      parameters:
+        - name: ABID
+          in: path
+          required: true
+          type: string
+  /{ABID}/services/warning:
+    get:
+      responses:
+        '200':
+          description: default
+          schema:
+            type: object
+            properties:
+              warning:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    extent:
+                      type: string
+                      description: extent
+                    identifier:
+                      type: string
+                      description: identifier
+                    routeRecommendation:
+                      type: array
+                      items: {}
+                      description: routeRecommendation
+                    coordinate:
+                      type: object
+                      properties:
+                        lat:
+                          type: string
+                          description: lat
+                        long:
+                          type: string
+                          description: long
+                      description: coordinate
+                    footer:
+                      type: array
+                      items: {}
+                      description: footer
+                    icon:
+                      type: string
+                      description: icon
+                    isBlocked:
+                      type: string
+                      description: isBlocked
+                    description:
+                      type: array
+                      items:
+                        type: string
+                      description: description
+                    title:
+                      type: string
+                      description: title
+                    point:
+                      type: string
+                      description: point
+                    display_type:
+                      type: string
+                      description: display_type
+                    lorryParkingFeatureIcons:
+                      type: array
+                      items: {}
+                      description: lorryParkingFeatureIcons
+                    future:
+                      type: boolean
+                      description: future
+                    subtitle:
+                      type: string
+                      description: subtitle
+                    startTimestamp:
+                      type: string
+                      description: startTimestamp
+                description: warning
+      summary: getAllWarnings
+      operationId: GetAllWarnings
+      description: All Warnings by ABxxx
+      parameters:
+        - name: ABID
+          in: path
+          required: true
+          type: string
+  /{ABID}/services/closure:
+    get:
+      responses:
+        '200':
+          description: default
+          schema:
+            type: object
+            properties:
+              closure:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    extent:
+                      type: string
+                      description: extent
+                    identifier:
+                      type: string
+                      description: identifier
+                    routeRecommendation:
+                      type: array
+                      items: {}
+                      description: routeRecommendation
+                    coordinate:
+                      type: object
+                      properties:
+                        lat:
+                          type: string
+                          description: lat
+                        long:
+                          type: string
+                          description: long
+                      description: coordinate
+                    footer:
+                      type: array
+                      items: {}
+                      description: footer
+                    icon:
+                      type: string
+                      description: icon
+                    isBlocked:
+                      type: string
+                      description: isBlocked
+                    description:
+                      type: array
+                      items:
+                        type: string
+                      description: description
+                    title:
+                      type: string
+                      description: title
+                    point:
+                      type: string
+                      description: point
+                    display_type:
+                      type: string
+                      description: display_type
+                    lorryParkingFeatureIcons:
+                      type: array
+                      items: {}
+                      description: lorryParkingFeatureIcons
+                    future:
+                      type: boolean
+                      description: future
+                    subtitle:
+                      type: string
+                      description: subtitle
+                    startTimestamp:
+                      type: string
+                      description: startTimestamp
+                description: closure
+      summary: getAllClosure
+      operationId: GetAllClosure
+      description: Get all closure by ABxxx
+      parameters:
+        - name: ABID
+          in: path
+          required: true
+          type: string
+  /{ABID}/services/electric_charging_station:
+    get:
+      responses:
+        '200':
+          description: default
+          schema:
+            type: object
+            properties:
+              electric_charging_station:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    extent:
+                      type: string
+                      description: extent
+                    identifier:
+                      type: string
+                      description: identifier
+                    routeRecommendation:
+                      type: array
+                      items: {}
+                      description: routeRecommendation
+                    coordinate:
+                      type: object
+                      properties:
+                        lat:
+                          type: string
+                          description: lat
+                        long:
+                          type: string
+                          description: long
+                      description: coordinate
+                    footer:
+                      type: array
+                      items: {}
+                      description: footer
+                    icon:
+                      type: string
+                      description: icon
+                    isBlocked:
+                      type: string
+                      description: isBlocked
+                    description:
+                      type: array
+                      items:
+                        type: string
+                      description: description
+                    title:
+                      type: string
+                      description: title
+                    point:
+                      type: string
+                      description: point
+                    display_type:
+                      type: string
+                      description: display_type
+                    lorryParkingFeatureIcons:
+                      type: array
+                      items: {}
+                      description: lorryParkingFeatureIcons
+                    future:
+                      type: boolean
+                      description: future
+                    subtitle:
+                      type: string
+                      description: subtitle
+                description: electric_charging_station
+      summary: getAllElectricCharging
+      operationId: GetAllElectricCharging
+      description: Get all electric charging stations on ABxxx
+      parameters:
+        - name: ABID
+          in: path
+          required: true
+          type: string
+definitions: {}
+parameters: {}
+responses: {}
+securityDefinitions: {}
+security: []
+tags: []
+x-ms-openai-manifest:
+  humanName: oDataAB
+  modelDescription: Public traffic information for german Autobahn
+  contactEmail: am@amcloudaide.com
